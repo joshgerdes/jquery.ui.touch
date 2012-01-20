@@ -8,10 +8,10 @@ This is a modified version of the jQuery plugin that enables touch event for jQu
 
 Adds support for:
 
-Clicking = tap
-Double Clicking = double tap
-Dragging = touch and move
-Right Click = touch and hold
+* Clicking = tap
+* Double Clicking = double tap
+* Dragging = touch and move
+* Right Click = touch and hold
 
 
 I did some quick modifications incorporating some changes to the plugin.  This version should be more unobstrusive and I have tested and works in iOS and Android 2.2.
