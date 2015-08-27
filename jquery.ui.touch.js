@@ -11,7 +11,18 @@
 * Organized as a proper plugin and added addTouch()
 */
 
-(function($) {
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node/CommonJS
+        module.exports = factory(require('jquery'));
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
 	
 	var lastTap = null;				// Holds last tapped element (so we can compare for double tap)
 	var tapValid = false;			// Are we still in the .6 second window where a double tap can occur
@@ -39,7 +50,7 @@
 
 		rightClickPending = true; // We could be performing a right click
 		rightClickEvent = (event.changedTouches)[0];
-		holdTimeout = window.setTimeout("doRightClick();", 800);
+		holdTimeout = window.setTimeout(doRightClick, 800);
 	};
 
 	function doRightClick() {
@@ -92,7 +103,7 @@
 		if (!tapValid) {
 			lastTap = first.target;
 			tapValid = true;
-			tapTimeout = window.setTimeout("cancelTap();", 600);
+			tapTimeout = window.setTimeout(cancelTap, 600);
 			startHold(event);
 		}
 		else {
@@ -120,7 +131,7 @@
 			else {
 				lastTap = first.target;
 				tapValid = true;
-				tapTimeout = window.setTimeout("cancelTap();", 600);
+				tapTimeout = window.setTimeout(cancelTap, 600);
 				startHold(event);
 			}
 		}
@@ -182,12 +193,10 @@
 		}
 	};
 	
-	$.extend($.support, {
-		touch: "ontouchend" in document
-	});
+	var touchAvailable = ("ontouchend" in document);
 
 	$.fn.addTouch = function() {
-	    if ($.support.touch) {
+	    if (touchAvailable) {
             this.each(function(i,el){
                 el.addEventListener("touchstart", iPadTouchHandler, false);
                 el.addEventListener("touchmove", iPadTouchHandler, false);
@@ -197,4 +206,4 @@
 	    }
 	};
 
-})(jQuery);
+}));
