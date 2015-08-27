@@ -11,5 +11,8 @@
   "license": "MIT",
   "authors": [
     "Josh Gerdes <josh@joshgerdes.com>"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "*"
+  }
 }
