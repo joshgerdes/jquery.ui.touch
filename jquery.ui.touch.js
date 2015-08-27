@@ -11,7 +11,18 @@
 * Organized as a proper plugin and added addTouch()
 */
 
-(function($) {
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node/CommonJS
+        module.exports = factory(require('jquery'));
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
 	
 	var lastTap = null;				// Holds last tapped element (so we can compare for double tap)
 	var tapValid = false;			// Are we still in the .6 second window where a double tap can occur
@@ -197,4 +208,4 @@
 	    }
 	};
 
-})(jQuery);
+}));
