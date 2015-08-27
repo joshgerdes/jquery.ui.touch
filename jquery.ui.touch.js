@@ -193,12 +193,10 @@
 		}
 	};
 	
-	$.extend($.support, {
-		touch: "ontouchend" in document
-	});
+	var touchAvailable = ("ontouchend" in document);
 
 	$.fn.addTouch = function() {
-	    if ($.support.touch) {
+	    if (touchAvailable) {
             this.each(function(i,el){
                 el.addEventListener("touchstart", iPadTouchHandler, false);
                 el.addEventListener("touchmove", iPadTouchHandler, false);

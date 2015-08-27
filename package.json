@@ -17,5 +17,8 @@
   "author": "Josh Gerdes <josh@joshgerdes.com>",
   "bugs": {
     "url": "https://github.com/joshgerdes/jquery.ui.touch/issues"
+  },
+  "dependencies": {
+    "jquery": "*"
   }
 }
