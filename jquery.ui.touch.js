@@ -39,7 +39,7 @@
 
 		rightClickPending = true; // We could be performing a right click
 		rightClickEvent = (event.changedTouches)[0];
-		holdTimeout = window.setTimeout("doRightClick();", 800);
+		holdTimeout = window.setTimeout(doRightClick, 800);
 	};
 
 	function doRightClick() {
@@ -92,7 +92,7 @@
 		if (!tapValid) {
 			lastTap = first.target;
 			tapValid = true;
-			tapTimeout = window.setTimeout("cancelTap();", 600);
+			tapTimeout = window.setTimeout(cancelTap, 600);
 			startHold(event);
 		}
 		else {
@@ -120,7 +120,7 @@
 			else {
 				lastTap = first.target;
 				tapValid = true;
-				tapTimeout = window.setTimeout("cancelTap();", 600);
+				tapTimeout = window.setTimeout(cancelTap, 600);
 				startHold(event);
 			}
 		}
