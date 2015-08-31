@@ -8,6 +8,7 @@
     "ui",
     "touch"
   ],
+  "ignore": ["package.json"],
   "license": "MIT",
   "authors": [
     "Josh Gerdes <josh@joshgerdes.com>"
